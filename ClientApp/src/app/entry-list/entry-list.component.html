@@ -1,0 +1,28 @@
+<h1 id="tableLabel">{{ tableName }}</h1>
+
+<p>This list represents curated list of links for user</p>
+
+<p *ngIf="!linkEntries"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="linkEntries">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>UserName</th>
+      <th>Link</th>
+      <th>Summary</th>
+      <th>Tags</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let entry of linkEntries">
+      <td>{{ entry.id }}</td>
+      <td>{{ entry.userName }}</td>
+      <td><a href="{{ entry.targetUrl }}">Go</a></td>
+      <td>{{ entry.description }}</td>
+      <td>
+        <span *ngFor="let tag of entry.tags">{{ tag.name }}, </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
